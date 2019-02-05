@@ -332,7 +332,7 @@ WRes CriticalSection_Init(CCriticalSection* p){
     pthread_mutex_t mutex;
     int             rt;
     assert(p!=0);
-    assert((*p)==0);
+    // assert((*p)==0); //allow *p not init to zero :(
     rt=pthread_mutex_init(&mutex,0);
     if (rt!=0) return rt;
     
