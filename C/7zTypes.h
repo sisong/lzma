@@ -129,10 +129,6 @@ typedef int WRes;
 #define MY__E_ERROR_NEGATIVE_SEEK MY_HRESULT_FROM_errno_CONST_ERROR(EINVAL)
 */
 
-// gcc / clang : (sizeof(long) == sizeof(void*)) in 32/64 bits
-typedef          long INT_PTR;
-typedef unsigned long UINT_PTR;
-
 #define TEXT(quote) quote
 
 #define FILE_ATTRIBUTE_READONLY       0x0001
