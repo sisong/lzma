@@ -511,13 +511,15 @@ void MatchFinder_Init(CMatchFinder *p)
     || defined(__GNUC__) && (__GNUC__ >= 8) \
     || defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 1900)
       #define USE_SATUR_SUB_128
-      #define USE_AVX2
       #define ATTRIB_SSE41 __attribute__((__target__("sse4.1")))
-      #define ATTRIB_AVX2 __attribute__((__target__("avx2")))
+      #if (!defined(_MSC_VER))
+        #define USE_AVX2
+        #define ATTRIB_AVX2 __attribute__((__target__("avx2")))
+      #endif
   #elif defined(_MSC_VER)
-    #if (_MSC_VER >= 1600)
+    #if (_MSC_VER >= 1600) 
       #define USE_SATUR_SUB_128
-      #if (_MSC_VER >= 1900)
+      #if (_MSC_VER >= 1900) && (!defined(__clang__))
         #define USE_AVX2
         #include <immintrin.h> // avx
       #endif
@@ -1603,14 +1605,14 @@ void LzFindPrepare()
   {
     // #pragma message ("=== LzFind SSE41")
     _PRF(printf("\n=== LzFind SSE41\n"));
-    f = LzFind_SaturSub_128;
+    f = (LZFIND_SATUR_SUB_CODE_FUNC)LzFind_SaturSub_128;
 
     #ifdef USE_AVX2
     if (CPU_IsSupported_AVX2())
     {
       // #pragma message ("=== LzFind AVX2")
       _PRF(printf("\n=== LzFind AVX2\n"));
-      f = LzFind_SaturSub_256;
+      f = (LZFIND_SATUR_SUB_CODE_FUNC)LzFind_SaturSub_256;
     }
     #endif
   }
