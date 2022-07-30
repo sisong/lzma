@@ -2763,6 +2763,10 @@ SOURCE=..\..\Archive\Udf\UdfIn.h
 # End Group
 # Begin Source File
 
+SOURCE=..\..\Archive\ApfsHandler.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\Archive\ApmHandler.cpp
 # End Source File
 # Begin Source File
@@ -2843,11 +2847,19 @@ SOURCE=..\..\Archive\HfsHandler.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\Archive\HfsHandler.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\Archive\IArchive.h
 # End Source File
 # Begin Source File
 
 SOURCE=..\..\Archive\IhexHandler.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\Archive\LpHandler.cpp
 # End Source File
 # Begin Source File
 
@@ -2902,6 +2914,10 @@ SOURCE=..\..\Archive\QcowHandler.cpp
 # Begin Source File
 
 SOURCE=..\..\Archive\RpmHandler.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\Archive\SparseHandler.cpp
 # End Source File
 # Begin Source File
 
@@ -3026,6 +3042,14 @@ SOURCE=..\..\..\Windows\PropVariant.cpp
 # Begin Source File
 
 SOURCE=..\..\..\Windows\PropVariant.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\Windows\PropVariantConv.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\..\Windows\PropVariantConv.h
 # End Source File
 # Begin Source File
 
