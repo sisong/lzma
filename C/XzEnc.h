@@ -49,7 +49,8 @@ void XzEnc_Destroy(CXzEncHandle p);
 SRes XzEnc_SetProps(CXzEncHandle p, const CXzProps *props);
 void XzEnc_SetDataSize(CXzEncHandle p, UInt64 expectedDataSiize);
 SRes XzEnc_Encode(CXzEncHandle p, ISeqOutStream *outStream, ISeqInStream *inStream, ICompressProgress *progress);
-
+SRes XzEnc_Encode_Part(CXzEncHandle pp, ISeqOutStream *outStream, ISeqInStream *inStream,
+                       ICompressProgress *progress,int isWriteHead,int isWriteFooter);
 SRes Xz_Encode(ISeqOutStream *outStream, ISeqInStream *inStream,
     const CXzProps *props, ICompressProgress *progress);
 

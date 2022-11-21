@@ -1128,10 +1128,16 @@ static SRes XzEnc_MtCallback_Write(void *pp, unsigned outBufIndex)
 
 SRes XzEnc_Encode(CXzEncHandle pp, ISeqOutStream *outStream, ISeqInStream *inStream, ICompressProgress *progress)
 {
+    return XzEnc_Encode_Part(pp,outStream,inStream,progress,1,1);
+}
+
+SRes XzEnc_Encode_Part(CXzEncHandle pp, ISeqOutStream *outStream, ISeqInStream *inStream,
+                       ICompressProgress *progress,int isWriteHead,int isWriteFooter){
   CXzEnc *p = (CXzEnc *)pp;
 
   const CXzProps *props = &p->xzProps;
 
+ if (isWriteHead){
   XzEncIndex_Init(&p->xzIndex);
   {
     UInt64 numBlocks = 1;
@@ -1151,7 +1157,7 @@ SRes XzEnc_Encode(CXzEncHandle pp, ISeqOutStream *outStream, ISeqInStream *inStr
   }
 
   RINOK(Xz_WriteHeader((CXzStreamFlags)props->checkId, outStream));
-
+ }//isWriteHead
 
   #ifndef _7ZIP_ST
   if (props->numBlockThreads_Reduced > 1)
@@ -1296,7 +1302,10 @@ SRes XzEnc_Encode(CXzEncHandle pp, ISeqOutStream *outStream, ISeqInStream *inStr
     }
   }
 
+ if (isWriteFooter)
   return XzEncIndex_WriteFooter(&p->xzIndex, (CXzStreamFlags)props->checkId, outStream);
+ else
+  return SZ_OK;
 }
 
 
