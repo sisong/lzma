@@ -71,7 +71,7 @@ UInt32 MY_FAST_CALL CrcUpdateT1(UInt32 v, const void *data, size_t size, const U
 
 #ifdef MY_CPU_LE
 
-#if defined(MY_CPU_ARM_OR_ARM64)
+#if (defined(MY_CPU_ARM_OR_ARM64)) && (!defined(USE_CRC_EMU))
 
 // #pragma message("ARM*")
 
