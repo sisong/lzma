@@ -32,7 +32,7 @@ This code is based on public domain code from Wei Dai's Crypto++ library. */
       #define Z7_COMPILER_SHA256_SUPPORTED
     #endif
   #endif
-#elif defined(MY_CPU_ARM_OR_ARM64)
+#elif defined(MY_CPU_ARM64)
   #ifdef _MSC_VER
     #if _MSC_VER >= 1910
       #define Z7_COMPILER_SHA256_SUPPORTED
