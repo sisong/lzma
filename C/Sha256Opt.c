@@ -5,13 +5,17 @@
 #include "Compiler.h"
 #include "CpuArch.h"
 
+#ifndef _IS_TRY_USE_HW_SHA
+#define _IS_TRY_USE_HW_SHA 1
+#endif
+
 #if defined(_MSC_VER)
 #if (_MSC_VER < 1900) && (_MSC_VER >= 1200)
 // #define USE_MY_MM
 #endif
 #endif
 
-#ifdef MY_CPU_X86_OR_AMD64
+#if (_IS_TRY_USE_HW_SHA) && defined(MY_CPU_X86_OR_AMD64)
   #if defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 1600) // fix that check
       #define USE_HW_SHA
   #elif defined(Z7_LLVM_CLANG_VERSION)  && (Z7_LLVM_CLANG_VERSION  >= 30800) \
@@ -202,7 +206,7 @@ void Z7_FASTCALL Sha256_UpdateBlocks_HW(UInt32 state[8], const Byte *data, size_
 
 #endif // USE_HW_SHA
 
-#elif defined(MY_CPU_ARM64)
+#elif (_IS_TRY_USE_HW_SHA) && defined(MY_CPU_ARM64)
 
   #if defined(__clang__)
     #if (__clang_major__ >= 8) && (!defined(_MSC_VER)) // fix that check
