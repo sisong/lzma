@@ -1,4 +1,4 @@
-LZMA SDK 24.07
+LZMA SDK 24.08
 --------------
 
 LZMA SDK provides the documentation, samples, header files,
@@ -137,8 +137,8 @@ DOC/Methods.txt      - Compression method IDs for .7z
 
 bin/installer/   - example script to create installer that uses SFX module,
 
-bin/7zdec.exe    - simplified 7z archive decoder
-bin/7zr.exe      - 7-Zip console program (reduced version)
+bin/7zdec.exe    - simplified 7z archive decoder (x86 32-bit version)
+bin/7zr.exe      - 7-Zip console program (reduced version) (x86 32-bit version)
 bin/x64/7zr.exe  - 7-Zip console program (reduced version) (x64 version)
 bin/x64/7zdec.exe  - simplified 7z archive decoder (x64 version)
 bin/arm64/7zr.exe  - 7-Zip console program (reduced version) (arm64 version)
