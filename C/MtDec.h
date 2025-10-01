@@ -36,7 +36,7 @@ SRes MtProgress_ProgressAdd(CMtProgress *p, UInt64 inSize, UInt64 outSize);
 SRes MtProgress_GetError(CMtProgress *p);
 void MtProgress_SetError(CMtProgress *p, SRes res);
 
-struct CMtDec_;
+typedef struct CMtDec_ CMtDec;
 
 typedef struct
 {
